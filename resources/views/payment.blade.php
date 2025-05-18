@@ -123,15 +123,46 @@
 
 
             // Cash request AJAX
+
+            // $('#requestCashBtn').click(function() {
+
+            //     // Get reference to the button
+            //     const $btn = $(this);
+
+            //     // Save original button text
+            //     const originalText = $btn.text();
+
+            //     // Set loading state
+            //     $btn.prop('disabled', true).text('Please wait...');
+
+            //     $.ajax({
+            //             url: `/stores/${storeId}/request-cash`,
+            //             type: 'POST',
+            //             headers: {
+            //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //             },
+            //         })
+            //         .done(res => {
+            //             Swal.fire('Requested!', 'We will send someone shortly.', 'success');
+            //         }).then(() => {
+            //             // window.location.href = '/';
+            //             window.location.href = '/';
+            //         })
+            //         .fail(xhr => {
+            //             Swal.fire('Error', 'Could not send request.', 'error');
+            //         })
+
+            //         .always(() => {
+            //             // Restore button state whether request succeeds or fails
+            //             $btn.prop('disabled', false).text(originalText);
+            //         });
+            // });
+
             $('#requestCashBtn').click(function() {
-
-                // Get reference to the button
                 const $btn = $(this);
-
-                // Save original button text
                 const originalText = $btn.text();
 
-                // Set loading state
+                // Show loading state
                 $btn.prop('disabled', true).text('Please wait...');
 
                 $.ajax({
@@ -142,17 +173,26 @@
                         },
                     })
                     .done(res => {
-                        Swal.fire('Requested!', 'We will send someone shortly.', 'success');
+                        // Fire the alert, and only after the user clicks "OK" do we redirect
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Requested!',
+                            text: 'We will send someone shortly.'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = '/';
+                            }
+                        });
                     })
                     .fail(xhr => {
                         Swal.fire('Error', 'Could not send request.', 'error');
                     })
-
                     .always(() => {
-                        // Restore button state whether request succeeds or fails
+                        // Restore button state
                         $btn.prop('disabled', false).text(originalText);
                     });
             });
+
         });
     </script>
 </body>
