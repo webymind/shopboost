@@ -6,9 +6,7 @@
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8" />
-    <!-- in your <head> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Boost your store visibility - Setup Infos</title>
     <!--<< Favcion >>-->
     <link rel="shortcut icon" href="/assets/img/favicon.svg">
@@ -148,8 +146,7 @@
                                 <label class="block text-black-700">Upload Images (Max 10)</label>
 
                                 <input id="fileInput" type="file" name="images[]" multiple accept="image/*"
-                                    class="w-full mt-1 block z-10 relative" capture="environment"
-                                    class="w-full mt-1 block opacity-0 absolute inset-0 cursor-pointer" />
+                                    class="w-full mt-1 block z-10 relative" />
                                 <div id="previewContainer" class="flex flex-wrap gap-2 mt-2"></div>
                                 {{-- <label for="fileInput" class="block">
                                     <span class="text-black-700">Upload Images (Max 10)</span>
