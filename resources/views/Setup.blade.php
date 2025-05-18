@@ -63,7 +63,7 @@
                 <div id="steps" class="space-y-8">
                     <!-- Step 1 -->
                     <div>
-                        <button id="backBtn" class="bg-blue-600 text-white px-4 py-2 rounded">
+                        <button class="bg-gray-600 text-white px-4 py-2 rounded">
                             <a href="{{ url('/') }}">Back</a>
                         </button>
                     </div>
@@ -201,7 +201,7 @@
 
                 <!-- Navigation Buttons -->
                 <div class="flex justify-between mt-6">
-                    <button type="button" id="prevBtn" class="bg-gray-300 text-black-700 px-4 py-2 rounded"
+                    <button type="button" id="prevBtn" class="bg-orange-300 text-black-700 px-4 py-2 rounded"
                         disabled>Previous</button>
                     <button type="button" id="nextBtn"
                         class="bg-blue-600 text-white px-4 py-2 rounded">Next</button>
