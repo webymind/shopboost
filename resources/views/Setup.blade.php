@@ -505,9 +505,55 @@
             }
 
             // AJAX submission
+            // function submitWizardForm() {
+            //     const formEl = $('#wizardForm')[0];
+            //     const data = new FormData(formEl);
+            //     $.ajax({
+            //             url: '{{ route('stores.store') }}',
+            //             type: 'POST',
+            //             headers: {
+            //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //             },
+            //             data: data,
+            //             processData: false,
+            //             contentType: false
+            //         })
+            //         .done(res => {
+            //             Swal.fire({
+            //                 icon: 'success',
+            //                 title: 'Success!',
+            //                 text: res.message || 'Your store info has been saved.'
+            //             }).then(() => {
+            //                 // window.location.href = '/payment-method';
+            //                 window.location.href = `/payment-method?id=${res.id}`;
+            //             });
+            //         })
+            //         .fail(xhr => {
+            //             let msg = 'An error occurred.';
+            //             if (xhr.responseJSON && xhr.responseJSON.errors) {
+            //                 msg = Object.values(xhr.responseJSON.errors).flat().join('<br>');
+            //             } else if (xhr.responseJSON && xhr.responseJSON.message) {
+            //                 msg = xhr.responseJSON.message;
+            //             }
+            //             Swal.fire({
+            //                 icon: 'error',
+            //                 title: 'Error',
+            //                 html: msg
+            //             });
+            //         });
+            // }
+
+
+
+            // AJAX submission
             function submitWizardForm() {
+                const $btn = $('#nextBtn');
+                const original = $btn.text(); // store original ("Submit")
+                $btn.prop('disabled', true).text('Please wait...');
+
                 const formEl = $('#wizardForm')[0];
                 const data = new FormData(formEl);
+
                 $.ajax({
                         url: '{{ route('stores.store') }}',
                         type: 'POST',
@@ -524,7 +570,6 @@
                             title: 'Success!',
                             text: res.message || 'Your store info has been saved.'
                         }).then(() => {
-                            // window.location.href = '/payment-method';
                             window.location.href = `/payment-method?id=${res.id}`;
                         });
                     })
@@ -540,8 +585,13 @@
                             title: 'Error',
                             html: msg
                         });
+                    })
+                    .always(() => {
+                        // restore button
+                        $btn.prop('disabled', false).text(original);
                     });
             }
+
         });
     </script>
 
