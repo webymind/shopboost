@@ -143,7 +143,7 @@
                                     placeholder="Mon-Sat: 8:00 AM – 8:00 AM, Closed- 12:00 & Re-open 14:00PM, Sun: Closed"></textarea>
                             </div>
                             <div>
-                                <label class="block text-black-700">Upload Images (Max 10)</label>
+                                <label class="block text-black-700">Upload Images (*Max 10 - Use Google Browser)</label>
 
                                 <input id="fileInput" type="file" name="images[]" multiple accept="image/*"
                                     class="w-full mt-1 block z-10 relative" />
